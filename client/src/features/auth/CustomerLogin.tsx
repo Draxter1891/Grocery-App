@@ -1,4 +1,4 @@
-import {Alert, Animated, Image, Keyboard, SafeAreaView, StyleSheet, Text, useAnimatedValue, View} from 'react-native';
+import {Alert, Animated, Image, Keyboard, SafeAreaView, StyleSheet, Text, TouchableOpacity, useAnimatedValue, View} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import {
   GestureHandlerRootView,
@@ -16,6 +16,7 @@ import CustomInput from '@components/ui/CustomInput';
 import CustomButton from '@components/ui/CustomButton';
 import useKeyboardOffsetHeight from '@utils/useKeyboardOffsetHeight';
 import { customerLogin } from '@service/AuthService';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const bottomColors = [...lightColors].reverse();
 const CustomerLogin = () => {
@@ -124,6 +125,9 @@ const CustomerLogin = () => {
           
           <SafeAreaView />
         </View>
+        <TouchableOpacity style={styles.DeliveryButton} onPress={()=>resetAndNavigate('DeliveryLogin')}>
+          <Icon name="bike-fast" color={'#000'} size={RFValue(18)}/>
+        </TouchableOpacity>
       </View>
     </GestureHandlerRootView>
   );
@@ -178,5 +182,22 @@ const styles = StyleSheet.create({
   },
   phoneTxt:{
     marginLeft:10
+  },
+  DeliveryButton:{
+    position: 'absolute',
+    top:20,
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOffset: {width:1, height:1},
+    shadowRadius:10,
+    elevation:10,
+    padding:10,
+    height:60,
+    width:60,
+    borderRadius:30,
+    right:10,
+    zIndex:99,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
